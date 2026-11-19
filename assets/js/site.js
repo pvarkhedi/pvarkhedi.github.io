@@ -6,7 +6,6 @@
   var root = body.getAttribute("data-root") || "";
   var section = body.getAttribute("data-section") || "home";
   var page = body.getAttribute("data-page") || "";
-  var trips = window.TRIPS || [];
 
   var EMAIL = "poonamvkrish@gmail.com";
   var LINKS = {
@@ -20,11 +19,6 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-
-  var tripLinks = trips.map(function (t) {
-    var cur = page === "trip-" + t.slug ? ' aria-current="page"' : "";
-    return '<a href="' + root + "travel/" + t.slug + '.html"' + cur + ">" + esc(t.title) + "</a>";
-  }).join("");
 
   function cur(name) { return section === name ? ' aria-current="page"' : ""; }
 
@@ -44,13 +38,7 @@
       '<nav class="nav" id="site-nav" aria-label="Main">' +
         '<a href="' + root + 'index.html"' + cur("home") + ">Home</a>" +
         '<a href="' + root + 'data-science.html"' + cur("data") + ">Data science</a>" +
-        '<div class="has-sub' + (section === "travel" ? " current" : "") + '">' +
-          '<button aria-expanded="false" aria-haspopup="true">Travel</button>' +
-          '<div class="submenu">' +
-            '<a href="' + root + 'travel/index.html"' + (page === "travel-index" ? ' aria-current="page"' : "") + ">All trips</a>" +
-            tripLinks +
-          "</div>" +
-        "</div>" +
+        '<a href="' + root + 'travel/index.html"' + cur("travel") + ">Travel</a>" +
         '<a href="' + root + 'events.html"' + cur("events") + ">Events</a>" +
         '<a href="' + root + 'index.html#about">About</a>' +
       "</nav>" +
@@ -79,23 +67,6 @@
     toggle.setAttribute("aria-expanded", open);
     toggle.textContent = open ? "Close" : "Menu";
   });
-
-  // Travel submenu
-  var sub = document.querySelector(".has-sub");
-  var subBtn = sub.querySelector("button");
-  function setSub(open) { sub.classList.toggle("open", open); subBtn.setAttribute("aria-expanded", open); }
-  var hoverOpenedAt = 0;
-  var desktopHover = function () { return window.matchMedia("(hover: hover) and (min-width: 821px)").matches; };
-  subBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    // A click right after hover-open shouldn't close the menu again
-    if (sub.classList.contains("open") && Date.now() - hoverOpenedAt < 700) return;
-    setSub(!sub.classList.contains("open"));
-  });
-  sub.addEventListener("mouseenter", function () { if (desktopHover() && !sub.classList.contains("open")) { hoverOpenedAt = Date.now(); setSub(true); } });
-  sub.addEventListener("mouseleave", function () { if (desktopHover()) setSub(false); });
-  document.addEventListener("click", function (e) { if (!sub.contains(e.target)) setSub(false); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && sub.classList.contains("open")) { setSub(false); subBtn.focus(); } });
 
   function setHeaderH() { document.documentElement.style.setProperty("--header-h", document.querySelector(".site-header").offsetHeight + "px"); }
   setHeaderH(); window.addEventListener("resize", setHeaderH);
