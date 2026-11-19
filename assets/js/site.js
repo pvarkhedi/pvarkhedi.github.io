@@ -46,7 +46,7 @@
 
   var footer =
     '<footer class="site-footer"><div class="wrap footer-row">' +
-      '<span class="copy">&copy; ' + new Date().getFullYear() + " Poonam Varkhedi</span>" +
+      '<span class="copy">&copy; ' + new Date().getFullYear() + " Poonam Varkhedi Krish</span>" +
       '<nav aria-label="Contact and profiles">' +
         '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a>" +
         '<a href="' + LINKS.linkedin + '">LinkedIn</a>' +
