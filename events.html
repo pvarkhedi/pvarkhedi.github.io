@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events | Poonam Varkhedi</title>
+  <meta name="description" content="Events planned by Poonam Varkhedi, from weddings to celebrations.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&family=Ovo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-root="" data-section="events" data-page="events">
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">events</p>
+        <h1>Events I've planned</h1>
+        <p class="lede">I plan events the way I plan everything else: a clear budget, a timeline that works backwards from the day, and every detail written down so nobody has to worry on the day itself.</p>
+      </div>
+    </section>
+
+    <div id="event-list"></div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>How I can help</h2><p>Whether you want a full plan or just someone to run the day.</p></div>
+        <dl class="services">
+          <div><dt>Full planning</dt><dd>From the first budget to the last dance: vendors, design, timeline and coordination.</dd></div>
+          <div><dt>Partial planning</dt><dd>You've already started. I fill the gaps, tighten the budget and build the schedule.</dd></div>
+          <div><dt>Day-of coordination</dt><dd>I run the day itself so you and your guests can simply enjoy it.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="contact-band">
+          <p class="kicker">let's talk</p>
+          <h2>Planning something?</h2>
+          <p>Tell me what you have in mind at poonamvkrish@gmail.com.</p>
+          <a class="btn" href="mailto:poonamvkrish@gmail.com?subject=Event%20planning">Email me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" id="lightbox-close">Close</button>
+    <img alt="">
+  </div>
+
+  <script src="assets/js/trips.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/events.js"></script>
+  <script>
+  (function () {
+    var esc = window.SITE.esc;
+    var html = (window.EVENTS || []).map(function (ev, idx) {
+      var meta = [["Type", ev.type], ["Date", ev.date], ["Location", ev.location], ["Guests", ev.guests], ["My role", ev.role]]
+        .filter(function (r) { return r[1]; })
+        .map(function (r) { return "<li><b>" + r[0] + "</b><span>" + esc(r[1]) + "</span></li>"; }).join("");
+      var photos = ev.photos && ev.photos.length ? ev.photos.map(function (p) {
+        var src = "images/events/" + ev.id + "/" + p.src;
+        return '<figure><button type="button" data-src="' + esc(src) + '" aria-label="Enlarge photo: ' + esc(p.alt || "") + '"><img src="' + esc(src) + '" alt="' + esc(p.alt || "") + '" loading="lazy"></button></figure>';
+      }).join("") : Array.apply(null, Array(6)).map(function (_, i) {
+        return '<figure><div class="ph">' + (i === 0 ? "photos coming soon" : "") + "</div></figure>";
+      }).join("");
+      return '<section class="section' + (idx % 2 === 0 ? " tint" : "") + '" id="' + esc(ev.id) + '"><div class="wrap event-feature">' +
+        "<div><h2>" + esc(ev.title) + "</h2><p>" + esc(ev.summary) + '</p><ul class="meta">' + meta + "</ul>" +
+        '<h3>What I handled</h3><ul class="scope">' + ev.scope.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ul></div>" +
+        '<div class="gallery">' + photos + "</div></div></section>";
+    }).join("");
+    document.getElementById("event-list").innerHTML = html;
+
+    var lb = document.getElementById("lightbox"), lbImg = lb.querySelector("img"), last;
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest(".gallery button");
+      if (!b) return;
+      last = b; lbImg.src = b.dataset.src; lbImg.alt = b.querySelector("img").alt;
+      lb.classList.add("open"); document.getElementById("lightbox-close").focus();
+    });
+    function close() { lb.classList.remove("open"); if (last) last.focus(); }
+    document.getElementById("lightbox-close").addEventListener("click", close);
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && lb.classList.contains("open")) close(); });
+  })();
+  </script>
+</body>
+</html>

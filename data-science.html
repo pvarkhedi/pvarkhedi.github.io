@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data science projects | Poonam Varkhedi</title>
+  <meta name="description" content="Data science projects by Poonam Varkhedi: racial bias in the Oscars, machine learning from scratch, time series forecasting and more.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&family=Ovo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-root="" data-section="data" data-page="data">
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">data science</p>
+        <h1>Projects</h1>
+        <p class="lede">Research, machine learning and visualization work, from a 75-year study of the Academy Awards to models I built from scratch to understand how they work.</p>
+      </div>
+    </section>
+
+    <!-- Featured case study -->
+    <section class="section tint" aria-labelledby="oscars">
+      <div class="wrap">
+        <div class="case">
+          <div>
+            <p class="kicker">featured research</p>
+            <h2 id="oscars">Is there racial bias in the Oscars?</h2>
+            <p>The Academy is often accused of overlooking actors of color. We tested that claim against the right baseline: not the U.S. population, but the actors who actually played lead roles each year. If nominees look like the talent pool they're picked from, the bias sits upstream in casting, not in the voting.</p>
+            <ul class="meta">
+              <li><b>Data</b><span>Every Best Actor nominee and the male lead of every film, 1934 to 2008, plus Golden Globe Best Actor in a Drama nominees</span></li>
+              <li><b>Methods</b><span>Web scraping (Wikipedia and ethnicity databases), name-based gender inference, time-series comparison by decade</span></li>
+              <li><b>Team</b><span>With Emily Kwan and Rebecca Hu, UC San Diego, 2020</span></li>
+              <li><b>Stack</b><span>Python, pandas, BeautifulSoup, matplotlib</span></li>
+            </ul>
+            <div class="btn-row">
+              <a class="btn dark" href="docs/FinalReportOscars.pdf">Read the report</a>
+              <a class="btn ghost" href="https://github.com/pvarkhedi/OscarRacialBias">View the code</a>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Nominees vs. the pool they're chosen from</h3>
+            <p class="sub">Share of male lead roles in all films compared with share of Oscar Best Actor nominees, by decade</p>
+            <div class="chart-legend" aria-hidden="true">
+              <span><i style="border-color:#b5aca4"></i>Lead roles in all films</span>
+              <span><i class="dash" style="border-color:#4d403a"></i>Best Actor nominees</span>
+            </div>
+            <div class="chart" id="chart-white"></div>
+            <div class="chart" id="chart-black" style="margin-top:18px"></div>
+            <details style="margin-top:12px;font-size:.92rem">
+              <summary style="cursor:pointer;font-family:var(--label);text-transform:uppercase;letter-spacing:.1em;font-size:.75rem">Show as a table</summary>
+              <table class="budget-table" id="chart-table" style="margin-top:8px"></table>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All other projects -->
+    <section class="section" aria-labelledby="more">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="more">More projects</h2>
+          <p>Each one links to the notebook or repo so you can see the code.</p>
+        </div>
+
+        <div class="project-group">
+          <h3>Machine learning</h3>
+
+          <article class="project">
+            <div class="thumb"><img src="images/projects/decisiontree.png" alt="Diagram of a decision tree splitting on attributes" loading="lazy"></div>
+            <div>
+              <h4>Decision tree classifier, built from scratch</h4>
+              <p>Which businesses should a sales team cold-call first? I wrote a decision tree from the ground up, using Gini impurity, information gain and recursion, then compared its accuracy with scikit-learn's version on real sales data.</p>
+              <div class="stack"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Classification</span></div>
+            </div>
+            <div class="links"><a href="https://github.com/pvarkhedi/DecisionTreeClassifier/blob/master/DecisionTrees.ipynb">Notebook</a></div>
+          </article>
+
+          <article class="project">
+            <div class="thumb"><img src="images/projects/svm.png" alt="Scatter plot of drug dosages classified as effective or not effective" loading="lazy"></div>
+            <div>
+              <h4>Support vector machines, two ways</h4>
+              <p>First a simple SVM of my own that maps one-dimensional dosage data into two dimensions to find effective drug doses. Then a scikit-learn SVM that classifies wines from a multivariate ratings dataset.</p>
+              <div class="stack"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Kernels</span></div>
+            </div>
+            <div class="links">
+              <a href="https://github.com/pvarkhedi/SupportVectorMachine/blob/master/SVM_from_scratch.ipynb">SVM from scratch</a>
+              <a href="https://github.com/pvarkhedi/SupportVectorMachine/blob/master/SVM_using_sklearn.ipynb">SVM with scikit-learn</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="thumb"><img src="images/projects/tsa.png" alt="Line chart of Google stock price with moving averages" loading="lazy"></div>
+            <div>
+              <h4>Forecasting Google's stock price with ARIMA</h4>
+              <p>Explored the series with the Dickey-Fuller test and additive and multiplicative decompositions, made it stationary with seasonal differencing, then fit an ARIMA model to forecast prices.</p>
+              <div class="stack"><span class="tag">Python</span><span class="tag">statsmodels</span><span class="tag">Time series</span></div>
+            </div>
+            <div class="links"><a href="https://github.com/pvarkhedi/TimeSeriesAnalysis/blob/master/TimeSeriesAnalysis.ipynb">Notebook</a></div>
+          </article>
+        </div>
+
+        <div class="project-group">
+          <h3>Data analysis and web scraping</h3>
+
+          <article class="project">
+            <div class="thumb"><img src="images/projects/replication.png" alt="First page of the Wikipedia controversial pages paper" loading="lazy"></div>
+            <div>
+              <h4>Wikipedia's most controversial pages</h4>
+              <p>A replication of "Edit Wars in Wikipedia" (Yasseri et al.). I scored how controversial a page is by tracking its edit wars, then followed how that controversy rose and fell over time.</p>
+              <div class="stack"><span class="tag">Python</span><span class="tag">Scraping</span><span class="tag">Replication study</span></div>
+            </div>
+            <div class="links">
+              <a href="docs/Replication.pdf">Paper</a>
+              <a href="https://github.com/pvarkhedi/ReplicationProject">Code</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-group">
+          <h3>Data visualization</h3>
+
+          <article class="project">
+            <div class="thumb"><img src="images/projects/dashboard2.png" alt="Energy dashboard with stacked generation chart, price and temperature" loading="lazy"></div>
+            <div>
+              <h4>Springfield energy dashboard</h4>
+              <p>An interactive dashboard of energy generation, price and temperature for Springfield, Illinois. Built to learn how to wire up linked, interactive charts in JavaScript.</p>
+              <div class="stack"><span class="tag">JavaScript</span><span class="tag">Highcharts</span><span class="tag">HTML/CSS</span></div>
+            </div>
+            <div class="links">
+              <a href="https://www.youtube.com/watch?v=N1l8AZtIANc">Video demo</a>
+              <a href="https://github.com/pvarkhedi/EnergyDashboard">Code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/trips.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+  /* Shares by decade, recomputed from the project's data
+     (github.com/pvarkhedi/OscarRacialBias, data/ folder). */
+  (function () {
+    var decades = ["1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s"];
+    var data = {
+      white: { leads: [93.8,96.6,96.4,95.1,91.0,93.4,88.4,84.6], noms: [100,100,98,98,98,94,92,78], min: 70, max: 100, title: "White actors" },
+      black: { leads: [0.0,0.2,0.4,1.4,7.0,3.6,7.0,9.1],       noms: [0,0,0,0,2,2,8,18],          min: 0,  max: 20,  title: "Black actors" }
+    };
+    var GRAY = "#b5aca4", BLUE = "#4d403a", INK = "#1d1b1a", SOFT = "#8b847e", RULE = "#ece8e3";
+    var W = 560, H = 190, m = { t: 26, r: 92, b: 26, l: 34 };
+
+    function draw(el, d) {
+      var iw = W - m.l - m.r, ih = H - m.t - m.b;
+      var x = function (i) { return m.l + (i / (decades.length - 1)) * iw; };
+      var y = function (v) { return m.t + ih - ((v - d.min) / (d.max - d.min)) * ih; };
+      var ticks = d.max === 100 ? [70, 80, 90, 100] : [0, 5, 10, 15, 20];
+      var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + d.title + ': share of lead roles versus share of Best Actor nominees by decade">';
+      s += '<text x="' + m.l + '" y="14" font-family="Montserrat, sans-serif" font-weight="600" font-size="13" fill="' + INK + '">' + d.title + "</text>";
+      ticks.forEach(function (t) {
+        s += '<line x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + y(t) + '" y2="' + y(t) + '" stroke="' + RULE + '"/>';
+        s += '<text x="' + (m.l - 8) + '" y="' + (y(t) + 4) + '" text-anchor="end" font-size="11" fill="' + SOFT + '" font-family="Montserrat, sans-serif">' + t + "%</text>";
+      });
+      decades.forEach(function (lab, i) {
+        if (i % 2 === 0 || i === decades.length - 1) s += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="11" fill="' + SOFT + '" font-family="Montserrat, sans-serif">' + lab + "</text>";
+      });
+      function line(vals, color, dash) {
+        var p = vals.map(function (v, i) { return (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1); }).join("");
+        return '<path d="' + p + '" fill="none" stroke="' + color + '" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"' + (dash ? ' stroke-dasharray="6 5"' : "") + "/>";
+      }
+      s += line(d.leads, GRAY, false) + line(d.noms, BLUE, true);
+      var li = decades.length - 1;
+      // Direct labels at line ends, nudged apart if they collide
+      var yl = y(d.leads[li]), yn = y(d.noms[li]);
+      if (Math.abs(yl - yn) < 14) { if (yl < yn) { yl -= 7; yn += 7; } else { yl += 7; yn -= 7; } }
+      s += '<circle cx="' + x(li) + '" cy="' + y(d.leads[li]) + '" r="4" fill="' + GRAY + '" stroke="#fff" stroke-width="2"/>';
+      s += '<circle cx="' + x(li) + '" cy="' + y(d.noms[li]) + '" r="4" fill="' + BLUE + '" stroke="#fff" stroke-width="2"/>';
+      s += '<text x="' + (x(li) + 10) + '" y="' + (yl + 4) + '" font-size="11.5" fill="' + SOFT + '" font-family="Montserrat, sans-serif">Leads ' + d.leads[li] + "%</text>";
+      s += '<text x="' + (x(li) + 10) + '" y="' + (yn + 4) + '" font-size="11.5" font-weight="600" fill="' + INK + '" font-family="Montserrat, sans-serif">Nominees ' + d.noms[li] + "%</text>";
+      s += '<line class="xh" x1="0" x2="0" y1="' + m.t + '" y2="' + (H - m.b) + '" stroke="' + SOFT + '" stroke-width="1" opacity="0"/>';
+      s += '<rect class="hit" x="' + m.l + '" y="' + m.t + '" width="' + iw + '" height="' + ih + '" fill="transparent"/>';
+      s += "</svg>";
+      el.innerHTML = s + '<div class="tip"></div>';
+
+      var svg = el.querySelector("svg"), tip = el.querySelector(".tip"), xh = el.querySelector(".xh");
+      function move(ev) {
+        var r = svg.getBoundingClientRect();
+        var px = ((ev.clientX - r.left) / r.width) * W;
+        var i = Math.max(0, Math.min(decades.length - 1, Math.round(((px - m.l) / iw) * (decades.length - 1))));
+        xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("opacity", ".5");
+        tip.innerHTML = "<b>" + decades[i] + "</b><br>Leads " + d.leads[i] + "%<br>Nominees " + d.noms[i] + "%";
+        tip.style.left = (x(i) / W) * r.width + "px";
+        tip.style.top = (Math.min(y(d.leads[i]), y(d.noms[i])) / H) * r.height + "px";
+        tip.style.opacity = 1;
+      }
+      svg.addEventListener("mousemove", move);
+      svg.addEventListener("mouseleave", function () { tip.style.opacity = 0; xh.setAttribute("opacity", "0"); });
+    }
+    draw(document.getElementById("chart-white"), data.white);
+    draw(document.getElementById("chart-black"), data.black);
+
+    var t = '<thead><tr><th>Decade</th><th class="num">White leads</th><th class="num">White nominees</th><th class="num">Black leads</th><th class="num">Black nominees</th></tr></thead><tbody>';
+    decades.forEach(function (dc, i) {
+      t += "<tr><td>" + dc + '</td><td class="num">' + data.white.leads[i] + '%</td><td class="num">' + data.white.noms[i] + '%</td><td class="num">' + data.black.leads[i] + '%</td><td class="num">' + data.black.noms[i] + "%</td></tr>";
+    });
+    document.getElementById("chart-table").innerHTML = t + "</tbody>";
+  })();
+  </script>
+</body>
+</html>
