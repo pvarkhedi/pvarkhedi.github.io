@@ -26,6 +26,15 @@ window.EVENTS = [
       "Day-of schedule and run of show",
       "Coordination with family and vendors"
     ],
-    photos: []
+    photos: [
+      { src: "reception-head-table.jpg", alt: "Reception under string lights among the trees, with carved wooden screens behind the head table" },
+      { src: "table-setting.jpg", alt: "Long wooden tables with white gauze runners, peach and white bouquets, light blue napkins and a table number card" },
+      { src: "head-table-florals.jpg", alt: "Head table centerpiece of lilies, hydrangeas and dahlias in a brass bowl on a sage green runner" },
+      { src: "seating-chart.jpg", alt: "Find your seat chart in an ornate gold frame, flanked by brass vases of white orchids" },
+      { src: "ganesha-welcome.jpg", alt: "Brass Ganesha decorated with jasmine and red hibiscus between two brass lamps" },
+      { src: "memory-table.jpg", alt: "Outdoor memory table of framed family photos with gold vases of white and yellow flowers" },
+      { src: "ceremony-mandap.jpg", alt: "Ceremony stage with carved wooden screens strung with jasmine and roses, brass lamps and white orchids" },
+      { src: "ancestor-portraits.jpg", alt: "Framed portraits of family elders draped in flower garlands on a table with gold fabric and brass diyas" }
+    ]
   }
 ];
