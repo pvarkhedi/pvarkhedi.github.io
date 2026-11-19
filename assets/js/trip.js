@@ -8,7 +8,7 @@
     return "$" + Number(n).toLocaleString("en-US", { minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0 });
   };
 
-  document.title = T.title + " | Poonam Varkhedi";
+  document.title = T.title + " | Poonam Varkhedi Krish";
 
   // ---------- Hero ----------
   var total = T.budget.actual.reduce(function (s, r) { return s + r.amount; }, 0);
